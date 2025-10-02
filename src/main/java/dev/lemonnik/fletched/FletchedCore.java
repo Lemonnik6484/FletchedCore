@@ -10,7 +10,6 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.neoforged.neoforge.common.NeoForge;
 
 import static dev.lemonnik.fletched.registries.ModBlocks.BLOCKS;
 import static dev.lemonnik.fletched.registries.ModCreativeTabs.CREATIVE_MODE_TABS;
