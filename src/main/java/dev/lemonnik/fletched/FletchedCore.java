@@ -21,19 +21,19 @@ public class FletchedCore {
     public static final String MODID = "fletched";
     public static final Logger LOGGER = LogUtils.getLogger();
 
-    public ResourceLocation id(String path) {
+    public static ResourceLocation id(String path) {
         return ResourceLocation.fromNamespaceAndPath(MODID, path);
     }
 
-    public void info(String message) {
+    public static void info(String message) {
         LOGGER.info("[FletchedCore/INFO] {}", message);
     }
 
-    public void error(String message) {
+    public static void error(String message) {
         LOGGER.error("[FletchedCore/ERROR] {}", message);
     }
 
-    public void warn(String message) {
+    public static void warn(String message) {
         LOGGER.warn("[FletchedCore/INFO] {}", message);
     }
 
@@ -43,8 +43,6 @@ public class FletchedCore {
         BLOCKS.register(modEventBus);
         ITEMS.register(modEventBus);
         CREATIVE_MODE_TABS.register(modEventBus);
-
-        NeoForge.EVENT_BUS.register(this);
 
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
