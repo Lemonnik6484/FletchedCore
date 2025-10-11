@@ -1,3 +1,14 @@
+buildscript {
+    repositories {
+        maven { url = 'https://maven.minecraftforge.net' }
+        maven { url = 'https://repo.spongepowered.org/maven' }
+        mavenCentral()
+    }
+    dependencies {
+        classpath group: 'org.spongepowered', name: 'mixingradle', version: '0.7-SNAPSHOT'
+    }
+}
+
 plugins {
     id 'eclipse'
     id 'idea'
@@ -5,6 +16,8 @@ plugins {
     id 'net.minecraftforge.gradle' version '[6.0,6.2)'
     id 'org.parchmentmc.librarian.forgegradle' version '1.+'
 }
+
+apply plugin: 'org.spongepowered.mixin'
 
 version = mod_version
 group = mod_group_id
@@ -22,6 +35,12 @@ minecraft {
 
     accessTransformers {
         file 'src/main/resources/META-INF/accesstransformer.cfg'
+    }
+
+    mixin {
+        add sourceSets.main, "refmap.fletched.json"
+
+        config "mixin.fletched.json"
     }
 
     runs {
@@ -66,6 +85,7 @@ repositories {
         name 'DVS1 Maven FS'
         url 'https://dvs1.progwml6.com/files/maven'
     }
+    maven { url = "https://repo.spongepowered.org/repository/maven-releases" }
 }
 
 dependencies {
@@ -73,6 +93,12 @@ dependencies {
 
     implementation fg.deobf("slimeknights.mantle:Mantle:${minecraft_version}-${mantle_build}")
     implementation fg.deobf("slimeknights.tconstruct:TConstruct:${minecraft_version}-${tinkers_build}")
+
+    implementation'org.spongepowered:mixin:0.8.5'
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+
+    compileOnly(annotationProcessor("io.github.llamalad7:mixinextras-common:0.4.1"))
+    annotationProcessor 'io.github.llamalad7:mixinextras-common:0.4.1'
 }
 
 tasks.named('processResources', ProcessResources).configure {
