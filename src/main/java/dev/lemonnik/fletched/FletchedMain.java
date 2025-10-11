@@ -9,13 +9,11 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 
 @Mod(FletchedMain.MODID)
-public class FletchedMain
-{
+public class FletchedMain {
     public static final String MODID = "fletched";
     private static final Logger LOGGER = LogUtils.getLogger();
     
-    public FletchedMain(FMLJavaModLoadingContext context)
-    {
+    public FletchedMain(FMLJavaModLoadingContext context) {
         IEventBus modEventBus = context.getModEventBus();
 
         modEventBus.addListener(this::commonSetup);
@@ -23,8 +21,7 @@ public class FletchedMain
         context.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
 
-    private void commonSetup(final FMLCommonSetupEvent event)
-    {
+    private void commonSetup(final FMLCommonSetupEvent event) {
         LOGGER.info("Chicken butt :D");
     }
 }
